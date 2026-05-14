@@ -1,5 +1,6 @@
 *.docx
 *.doc
 *.pdf
+*.md
 nul
 node_modules/
