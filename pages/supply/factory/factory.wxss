@@ -1,0 +1,129 @@
+.tab-bar {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  position: relative;
+}
+
+.tab-item.active { color: #2B7A4F; font-weight: 600; }
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #2B7A4F;
+  border-radius: 2rpx;
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  padding: 20rpx 30rpx;
+}
+
+.video-card {
+  width: 48%;
+  margin-bottom: 0;
+}
+
+.video-preview {
+  position: relative;
+  height: 240rpx;
+  background-color: #1a1a1a;
+  border-radius: 12rpx 12rpx 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-placeholder-icon { font-size: 48rpx; margin-bottom: 8rpx; }
+.video-placeholder-text { font-size: 24rpx; color: #ffffff; }
+
+.video-status {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.video-status text { color: #ffffff; font-size: 20rpx; }
+
+.video-actions {
+  padding: 12rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.video-action-btn {
+  font-size: 24rpx;
+  color: #2B7A4F;
+  padding: 8rpx 16rpx;
+}
+
+.vlog-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.vlog-preview {
+  width: 160rpx;
+  height: 100rpx;
+  background-color: #1a1a1a;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 16rpx;
+}
+
+.vlog-duration {
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4rpx 10rpx;
+  border-radius: 6rpx;
+}
+
+.vlog-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vlog-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 4rpx;
+}
+
+.vlog-actions {
+  flex-shrink: 0;
+}

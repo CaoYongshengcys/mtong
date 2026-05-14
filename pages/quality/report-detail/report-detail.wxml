@@ -1,0 +1,45 @@
+<view class="page-container" wx:if="{{report}}">
+  <view class="section">
+    <view class="report-header">
+      <text class="report-title">成品检验报告单</text>
+      <text class="report-no">COA</text>
+    </view>
+    <view class="report-meta">
+      <view class="meta-row"><text class="meta-label">报告编号</text><text>{{report.reportNo}}</text></view>
+      <view class="meta-row"><text class="meta-label">批次号</text><text class="batch-no-small">{{report.batchNo}}</text></view>
+      <view class="meta-row"><text class="meta-label">产品名称</text><text>{{report.productName}}</text></view>
+      <view class="meta-row"><text class="meta-label">检验日期</text><text>{{report.inspectDate}}</text></view>
+      <view class="meta-row"><text class="meta-label">检验员</text><text>{{report.inspector}}</text></view>
+      <view class="meta-row"><text class="meta-label">审核人</text><text>{{report.reviewer}}</text></view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">检验结果</view>
+    <view class="result-table">
+      <view class="result-header">
+        <text class="result-col">项目</text>
+        <text class="result-col">标准</text>
+        <text class="result-col">结果</text>
+        <text class="result-col">判定</text>
+      </view>
+      <view class="result-row" wx:for="{{report.items}}" wx:key="name">
+        <text class="result-col">{{item.name}}</text>
+        <text class="result-col text-sm">{{item.standard}}</text>
+        <text class="result-col">{{item.result}}</text>
+        <text class="result-col tag {{item.qualified ? 'tag-green' : 'tag-red'}}">{{item.qualified ? '合格' : '不合格'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="conclusion-box">
+      <text class="conclusion-label">检验结论</text>
+      <text class="conclusion-value {{report.conclusion === '合格' ? 'text-primary' : 'text-danger'}}">{{report.conclusion}}</text>
+    </view>
+  </view>
+
+  <view class="submit-bar">
+    <button class="btn-primary submit-btn" bindtap="onExport">导出PDF报告</button>
+  </view>
+</view>

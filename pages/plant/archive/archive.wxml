@@ -1,0 +1,55 @@
+<view class="page-container">
+  <view class="archive-list">
+    <view class="archive-card card" wx:for="{{archiveList}}" wx:key="id" bindtap="onArchiveTap" data-id="{{item.id}}">
+      <view class="archive-header flex-between">
+        <text class="archive-name">{{item.plotName}}</text>
+        <text class="tag tag-green">{{item.herbLabel}}</text>
+      </view>
+      <view class="archive-stage">
+        <view class="stage-progress">
+          <view class="stage-item {{item.growthStage === 'sow' || item.growthStage === 'sprout' || item.growthStage === 'grow' || item.growthStage === 'harvest' ? 'active' : ''}}">
+            <view class="stage-dot"></view>
+            <text class="stage-text">播种</text>
+          </view>
+          <view class="stage-line {{item.growthStage === 'sprout' || item.growthStage === 'grow' || item.growthStage === 'harvest' ? 'active' : ''}}"></view>
+          <view class="stage-item {{item.growthStage === 'sprout' || item.growthStage === 'grow' || item.growthStage === 'harvest' ? 'active' : ''}}">
+            <view class="stage-dot"></view>
+            <text class="stage-text">发芽</text>
+          </view>
+          <view class="stage-line {{item.growthStage === 'grow' || item.growthStage === 'harvest' ? 'active' : ''}}"></view>
+          <view class="stage-item {{item.growthStage === 'grow' || item.growthStage === 'harvest' ? 'active' : ''}}">
+            <view class="stage-dot"></view>
+            <text class="stage-text">生长</text>
+          </view>
+          <view class="stage-line {{item.growthStage === 'harvest' ? 'active' : ''}}"></view>
+          <view class="stage-item {{item.growthStage === 'harvest' ? 'active' : ''}}">
+            <view class="stage-dot"></view>
+            <text class="stage-text">采收</text>
+          </view>
+        </view>
+      </view>
+      <view class="archive-info flex-between">
+        <view>
+          <text class="text-sm text-muted">播种日期</text>
+          <text class="archive-info-value">{{item.sowDate}}</text>
+        </view>
+        <view>
+          <text class="text-sm text-muted">预计采收</text>
+          <text class="archive-info-value">{{item.estimatedHarvest}}</text>
+        </view>
+        <view wx:if="{{item.yieldPrediction}}">
+          <text class="text-sm text-muted">预测产量</text>
+          <text class="archive-info-value text-primary">{{item.yieldPrediction}} kg/亩</text>
+        </view>
+      </view>
+      <view class="archive-footer" catchtap="onPredictYield" data-id="{{item.id}}">
+        <text class="text-primary text-sm">智能预测产量 ></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{archiveList.length === 0 && !loading}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无种植档案</text>
+  </view>
+</view>

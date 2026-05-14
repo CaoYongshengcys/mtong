@@ -1,0 +1,109 @@
+.sub-nav {
+  display: flex;
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  margin-bottom: 2rpx;
+}
+
+.sub-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0;
+  border-radius: 12rpx;
+}
+
+.sub-nav-item.active {
+  background-color: #E3F2FD;
+}
+
+.sub-nav-item.active .sub-nav-text {
+  color: #1565C0;
+  font-weight: 600;
+}
+
+.sub-nav-icon { font-size: 36rpx; margin-bottom: 4rpx; }
+.sub-nav-text { font-size: 24rpx; color: #666666; }
+
+.filter-bar {
+  background-color: #ffffff;
+  padding: 16rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.filter-scroll { white-space: nowrap; }
+
+.filter-item {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+  color: #666666;
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+  background-color: #F5F5F5;
+}
+
+.filter-item.active {
+  background-color: #1565C0;
+  color: #ffffff;
+}
+
+.batch-list { padding: 0 30rpx; }
+.batch-card { margin-bottom: 20rpx; }
+.batch-header { margin-bottom: 16rpx; }
+
+.batch-no {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  font-family: 'Courier New', monospace;
+}
+
+.batch-body { margin-bottom: 16rpx; }
+
+.batch-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6rpx 0;
+  font-size: 26rpx;
+}
+
+.batch-product {
+  color: #333333;
+  font-weight: 500;
+}
+
+.batch-footer {
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+
+.fab-group {
+  position: fixed;
+  right: 40rpx;
+  bottom: 180rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  z-index: 100;
+}
+
+.fab {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #1565C0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(21, 101, 192, 0.4);
+}
+
+.fab-icon { font-size: 48rpx; color: #ffffff; font-weight: 300; }
+.fab-icon-sm { font-size: 36rpx; }
+
+.fab-scan {
+  background-color: #FF9800;
+  box-shadow: 0 6rpx 20rpx rgba(255, 152, 0, 0.4);
+}

@@ -1,0 +1,111 @@
+<view class="page-container">
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'info' ? 'active' : ''}}" bindtap="onTabChange" data-tab="info">批次信息</view>
+    <view class="tab-item {{activeTab === 'station' ? 'active' : ''}}" bindtap="onTabChange" data-tab="station">工位记录</view>
+    <view class="tab-item {{activeTab === 'trace' ? 'active' : ''}}" bindtap="onTabChange" data-tab="trace">追溯链</view>
+  </view>
+
+  <view wx:if="{{activeTab === 'info'}}">
+    <view class="section">
+      <view class="form-group">
+        <text class="form-label required">批次类型</text>
+        <picker range="{{batchTypes}}" range-key="label" bindchange="onBatchTypeChange">
+          <view class="form-input picker-input">
+            <text>{{batchTypeLabel || '请选择'}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-group">
+        <text class="form-label required">批次号</text>
+        <view class="batch-no-display">
+          <text class="batch-no-text">{{form.batchNo || '选择批次类型后自动生成'}}</text>
+        </view>
+      </view>
+      <view class="form-group">
+        <text class="form-label required">产品名称</text>
+        <input class="form-input" value="{{form.product}}" bindinput="onInput" data-field="product" placeholder="请输入产品名称" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">药材品种</text>
+        <picker range="{{herbTypes}}" range-key="label" bindchange="onHerbTypeChange">
+          <view class="form-input picker-input">
+            <text>{{herbTypeLabel || '请选择品种'}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-row">
+        <view class="form-group form-group-half">
+          <text class="form-label required">数量</text>
+          <input class="form-input" type="digit" value="{{form.quantity}}" bindinput="onInput" data-field="quantity" placeholder="0" />
+        </view>
+        <view class="form-group form-group-half">
+          <text class="form-label">单位</text>
+          <picker range="{{units}}" bindchange="onUnitChange">
+            <view class="form-input picker-input">
+              <text>{{form.unit || 'kg'}}</text>
+              <text class="picker-arrow">></text>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-group" wx:if="{{form.batchType !== 'primary'}}">
+        <text class="form-label">上游批次号</text>
+        <input class="form-input" value="{{form.sourceBatchNo}}" bindinput="onInput" data-field="sourceBatchNo" placeholder="输入上游批次号关联" />
+      </view>
+    </view>
+
+    <view class="submit-bar" wx:if="{{isCreate}}">
+      <button class="btn-primary submit-btn" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">创建批次</button>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'station'}}">
+    <view class="section">
+      <view class="section-title">工位扫码</view>
+      <view class="station-grid">
+        <view class="station-item" wx:for="{{processStations}}" wx:key="value" bindtap="onScanStation" data-station="{{item.value}}">
+          <text class="station-icon">{{item.icon}}</text>
+          <text class="station-label">{{item.label}}</text>
+          <text class="station-status">
+
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">工位记录</view>
+      <view class="record-item" wx:for="{{form.stationRecords}}" wx:key="station">
+        <view class="record-header flex-between">
+          <text class="record-station">{{item.stationLabel}}</text>
+          <text class="text-sm text-muted">{{item.time}}</text>
+        </view>
+        <text class="text-sm text-muted">操作人：{{item.operator}}</text>
+      </view>
+      <view class="empty-state" wx:if="{{form.stationRecords.length === 0}}">
+        <text class="empty-text">暂无工位记录，请扫码添加</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'trace'}}">
+    <view class="section">
+      <view class="section-title">批次追溯链</view>
+      <view class="trace-chain">
+        <view class="trace-node" wx:for="{{traceChain}}" wx:key="batchNo">
+          <view class="trace-dot"></view>
+          <view class="trace-info">
+            <text class="trace-batch-no">{{item.batchNo}}</text>
+            <text class="text-sm text-muted">{{item.product}}</text>
+          </view>
+          <view class="trace-line" wx:if="{{index < traceChain.length - 1}}"></view>
+        </view>
+      </view>
+      <view class="empty-state" wx:if="{{traceChain.length === 0}}">
+        <text class="empty-text">暂无追溯信息</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+<view class="page-container">
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'records' ? 'active' : ''}}" bindtap="onTabChange" data-tab="records">电子记录</view>
+    <view class="tab-item {{activeTab === 'audit' ? 'active' : ''}}" bindtap="onTabChange" data-tab="audit">审计追踪</view>
+  </view>
+
+  <view wx:if="{{activeTab === 'records'}}">
+    <view class="section">
+      <view class="record-card card" wx:for="{{recordList}}" wx:key="id" bindtap="onRecordTap" data-id="{{item.id}}">
+        <view class="record-header flex-between">
+          <text class="record-title">{{item.title}}</text>
+          <text class="tag {{item.statusClass}}">
+            {{item.statusLabel}}
+          </text>
+        </view>
+        <view class="record-meta">
+          <text class="text-sm text-muted">批次：{{item.batchNo}}</text>
+          <text class="text-sm text-muted">操作人：{{item.operator}}</text>
+          <text class="text-sm text-muted">时间：{{item.operateTime}}</text>
+        </view>
+        <view class="record-alcoa">
+          <text class="alcoa-tag">IP: {{item.ip}}</text>
+          <text class="alcoa-tag">设备: {{item.deviceFingerprint}}</text>
+        </view>
+      </view>
+      <view class="empty-state" wx:if="{{recordList.length === 0 && !loading}}">
+        <text class="empty-text">暂无电子记录</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'audit'}}">
+    <view class="section">
+      <view class="flex-between mb-20">
+        <view class="section-title" style="margin-bottom:0">修改审计日志</view>
+        <button class="btn-outline" size="mini" bindtap="onExportAudit">导出PDF</button>
+      </view>
+      <view class="audit-item" wx:for="{{auditTrailList}}" wx:key="id">
+        <view class="audit-header">
+          <text class="audit-title">{{item.recordTitle}}</text>
+          <text class="text-sm text-muted">{{item.operateTime}}</text>
+        </view>
+        <view class="audit-detail">
+          <text class="text-sm">修改字段：{{item.field}}</text>
+          <view class="audit-change">
+            <text class="text-sm text-danger">原值：{{item.oldValue}}</text>
+            <text class="audit-arrow">→</text>
+            <text class="text-sm text-primary">新值：{{item.newValue}}</text>
+          </view>
+          <text class="text-sm text-muted">修改原因：{{item.reason}}</text>
+          <text class="text-sm text-muted">审批人：{{item.approver}}</text>
+        </view>
+      </view>
+      <view class="empty-state" wx:if="{{auditTrailList.length === 0 && !loading}}">
+        <text class="empty-text">暂无审计记录</text>
+      </view>
+    </view>
+  </view>
+</view>

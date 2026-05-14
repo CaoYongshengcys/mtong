@@ -1,0 +1,5 @@
+*.docx
+*.doc
+*.pdf
+nul
+node_modules/

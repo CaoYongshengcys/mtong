@@ -1,0 +1,19 @@
+.wxss-vars {
+  --color-primary: #2B7A4F;
+  --color-primary-light: #4CAF50;
+  --color-primary-dark: #1B5E20;
+  --color-warning: #FF9800;
+  --color-danger: #F44336;
+  --color-info: #2196F3;
+  --color-bg: #F5F5F5;
+  --color-white: #FFFFFF;
+  --color-text: #333333;
+  --color-text-secondary: #666666;
+  --color-text-placeholder: #999999;
+  --color-border: #F0F0F0;
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --radius-sm: 8rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 16rpx;
+  --radius-xl: 24rpx;
+}

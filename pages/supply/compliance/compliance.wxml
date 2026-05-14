@@ -1,0 +1,43 @@
+<view class="page-container">
+  <view class="section">
+    <view class="section-title">生成合规报告</view>
+    <view class="form-group">
+      <text class="form-label">报告模板</text>
+      <picker range="{{templates}}" range-key="label" bindchange="onTemplateChange">
+        <view class="form-input picker-input">
+          <text>{{selectedTemplateLabel || '请选择模板'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+    <button class="btn-primary" size="mini" bindtap="onGenerate">生成报告</button>
+  </view>
+
+  <view class="section">
+    <view class="flex-between mb-20">
+      <view class="section-title" style="margin-bottom:0">报告列表</view>
+      <view class="flex-row">
+        <button class="btn-outline" size="mini" bindtap="onBatchExport">批量导出</button>
+        <button class="btn-primary" size="mini" bindtap="onReportToSupervisor" style="margin-left:12rpx">上报监管</button>
+      </view>
+    </view>
+    <view class="report-card card" wx:for="{{reportList}}" wx:key="id">
+      <view class="report-item-header flex-between">
+        <text class="report-item-title">{{item.title}}</text>
+        <text class="tag {{item.statusClass}}">
+          {{item.statusLabel}}
+        </text>
+      </view>
+      <view class="report-item-meta">
+        <text class="text-sm text-muted">批次：{{item.batchNo}}</text>
+        <text class="text-sm text-muted">{{item.createTime}}</text>
+      </view>
+      <view class="report-item-actions">
+        <text class="text-primary text-sm" bindtap="onExport" data-id="{{item.id}}">导出PDF</text>
+      </view>
+    </view>
+    <view class="empty-state" wx:if="{{reportList.length === 0 && !loading}}">
+      <text class="empty-text">暂无合规报告</text>
+    </view>
+  </view>
+</view>

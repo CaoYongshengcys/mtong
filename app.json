@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/plant/diary/diary",
+    "pages/plant/diary-add/diary-add",
+    "pages/plant/plot/plot",
+    "pages/plant/plot-detail/plot-detail",
+    "pages/plant/archive/archive",
+    "pages/process/batch/batch",
+    "pages/process/batch-detail/batch-detail",
+    "pages/process/iot-monitor/iot-monitor",
+    "pages/process/e-record/e-record",
+    "pages/quality/inspect-task/inspect-task",
+    "pages/quality/inspect-report/inspect-report",
+    "pages/quality/report-detail/report-detail",
+    "pages/supply/compliance/compliance",
+    "pages/supply/trace/trace",
+    "pages/supply/trace-detail/trace-detail",
+    "pages/supply/factory/factory",
+    "pages/mine/index/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "码码通追溯",
+    "navigationBarBackgroundColor": "#2B7A4F",
+    "backgroundColor": "#F5F5F5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2B7A4F",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "工作台",
+        "iconPath": "images/tab_home.png",
+        "selectedIconPath": "images/tab_home_active.png"
+      },
+      {
+        "pagePath": "pages/plant/diary/diary",
+        "text": "种植",
+        "iconPath": "images/tab_plant.png",
+        "selectedIconPath": "images/tab_plant_active.png"
+      },
+      {
+        "pagePath": "pages/process/batch/batch",
+        "text": "加工",
+        "iconPath": "images/tab_process.png",
+        "selectedIconPath": "images/tab_process_active.png"
+      },
+      {
+        "pagePath": "pages/supply/trace/trace",
+        "text": "溯源",
+        "iconPath": "images/tab_trace.png",
+        "selectedIconPath": "images/tab_trace_active.png"
+      },
+      {
+        "pagePath": "pages/mine/index/index",
+        "text": "我的",
+        "iconPath": "images/tab_mine.png",
+        "selectedIconPath": "images/tab_mine_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

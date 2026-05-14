@@ -1,0 +1,60 @@
+<view class="page-container">
+  <view class="search-section">
+    <view class="search-bar">
+      <input class="search-input" placeholder="输入批次号查询溯源" value="{{searchKey}}" bindinput="onSearchInput" bindconfirm="onSearch" />
+      <view class="search-scan" bindtap="onScanCode">📷</view>
+      <view class="search-btn" bindtap="onSearch">查询</view>
+    </view>
+  </view>
+
+  <view class="recent-section" wx:if="{{!traceInfo && recentSearches.length > 0}}">
+    <view class="flex-between mb-10">
+      <text class="text-sm text-muted">最近查询</text>
+      <text class="text-sm text-primary" bindtap="onClearRecent">清除</text>
+    </view>
+    <view class="recent-tags">
+      <view class="recent-tag" wx:for="{{recentSearches}}" wx:key="*this" bindtap="onRecentTap" data-key="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="trace-result" wx:if="{{traceInfo}}">
+    <view class="section">
+      <view class="trace-header">
+        <text class="trace-product">{{traceInfo.product}}</text>
+        <text class="tag tag-green">{{traceInfo.status}}</text>
+      </view>
+      <text class="trace-batch text-sm text-muted">批次号：{{traceInfo.batchNo}}</text>
+    </view>
+
+    <view class="section">
+      <view class="section-title">全链追溯</view>
+      <view class="trace-chain">
+        <view class="trace-node" wx:for="{{traceInfo.fullChain}}" wx:key="stage">
+          <view class="trace-dot-wrapper">
+            <view class="trace-dot"></view>
+            <view class="trace-line" wx:if="{{index < traceInfo.fullChain.length - 1}}"></view>
+          </view>
+          <view class="trace-card">
+            <view class="flex-between">
+              <text class="trace-stage">{{item.stage}}</text>
+              <text class="text-sm text-muted">{{item.time}}</text>
+            </view>
+            <text class="text-sm">{{item.details}}</text>
+            <view class="trace-meta">
+              <text class="text-sm text-muted">📍 {{item.location}}</text>
+              <text class="text-sm text-muted">👤 {{item.operator}}</text>
+            </view>
+            <text class="text-sm text-muted" wx:if="{{item.batchNo !== traceInfo.batchNo}}">批次：{{item.batchNo}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!traceInfo && !loading && recentSearches.length === 0}}">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">输入批次号查询产品溯源信息</text>
+  </view>
+</view>

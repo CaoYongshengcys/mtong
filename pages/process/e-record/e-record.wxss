@@ -1,0 +1,98 @@
+.tab-bar {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  position: relative;
+}
+
+.tab-item.active { color: #1565C0; font-weight: 600; }
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #1565C0;
+  border-radius: 2rpx;
+}
+
+.record-card { margin-bottom: 16rpx; }
+
+.record-header { margin-bottom: 12rpx; }
+
+.record-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.record-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  margin-bottom: 12rpx;
+}
+
+.record-alcoa {
+  display: flex;
+  gap: 12rpx;
+  padding-top: 12rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+
+.alcoa-tag {
+  font-size: 20rpx;
+  color: #999999;
+  background-color: #F5F5F5;
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+}
+
+.audit-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.audit-item:last-child { border-bottom: none; }
+
+.audit-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.audit-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.audit-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  padding-left: 20rpx;
+}
+
+.audit-change {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.audit-arrow {
+  color: #999999;
+  font-size: 24rpx;
+}

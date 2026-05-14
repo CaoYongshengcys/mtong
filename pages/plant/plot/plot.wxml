@@ -1,0 +1,40 @@
+<view class="page-container">
+  <view class="plot-list">
+    <view class="plot-card card" wx:for="{{plotList}}" wx:key="id" bindtap="onPlotTap" data-id="{{item.id}}">
+      <view class="plot-header flex-between">
+        <text class="plot-name">{{item.name}}</text>
+        <text class="tag tag-green">{{item.herbLabel}}</text>
+      </view>
+      <view class="plot-info">
+        <view class="plot-info-item">
+          <text class="text-sm text-muted">面积</text>
+          <text class="plot-info-value">{{item.area}} 亩</text>
+        </view>
+        <view class="plot-info-item">
+          <text class="text-sm text-muted">土壤</text>
+          <text class="plot-info-value">{{item.soilLabel}}</text>
+        </view>
+        <view class="plot-info-item">
+          <text class="text-sm text-muted">位置</text>
+          <text class="plot-info-value">{{item.location}}</text>
+        </view>
+        <view class="plot-info-item">
+          <text class="text-sm text-muted">农事记录</text>
+          <text class="plot-info-value">{{item.diaryCount}} 条</text>
+        </view>
+      </view>
+      <view class="plot-footer">
+        <text class="text-primary text-sm">查看详情 ></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{plotList.length === 0 && !loading}}">
+    <text class="empty-icon">🗺️</text>
+    <text class="empty-text">暂无地块信息</text>
+  </view>
+
+  <view class="fab" bindtap="onAddPlot">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

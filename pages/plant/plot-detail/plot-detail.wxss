@@ -1,0 +1,84 @@
+.tab-bar {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #2B7A4F;
+  font-weight: 600;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #2B7A4F;
+  border-radius: 2rpx;
+}
+
+.form-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.form-group-half {
+  flex: 1;
+}
+
+.picker-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.picker-arrow {
+  color: #cccccc;
+}
+
+.map-container {
+  width: 100%;
+  height: 600rpx;
+}
+
+.plot-map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-actions {
+  padding: 30rpx;
+  background-color: #ffffff;
+}
+
+.diary-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.diary-item:last-child {
+  border-bottom: none;
+}
+
+.submit-bar {
+  padding: 30rpx;
+  padding-bottom: calc(30rpx + env(safe-area-inset-bottom));
+}
+
+.submit-btn {
+  width: 100%;
+}

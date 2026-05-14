@@ -1,0 +1,46 @@
+<view class="page-container">
+  <view class="filter-bar">
+    <scroll-view scroll-x class="filter-scroll">
+      <view class="filter-item {{currentFilter === 'all' ? 'active' : ''}}" bindtap="onFilterTap" data-status="all">全部</view>
+      <view class="filter-item {{currentFilter === item.value ? 'active' : ''}}" wx:for="{{inspectStatus}}" wx:key="value" bindtap="onFilterTap" data-status="{{item.value}}">
+        {{item.label}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="task-list">
+    <view class="task-card card" wx:for="{{taskList}}" wx:key="id" bindtap="onTaskTap" data-id="{{item.id}}">
+      <view class="task-header flex-between">
+        <text class="task-sample-no">{{item.sampleNo}}</text>
+        <text class="tag {{item.statusTagClass}}">{{item.statusLabel}}</text>
+      </view>
+      <view class="task-body">
+        <view class="task-info-row">
+          <text class="text-muted text-sm">产品</text>
+          <text>{{item.productName}}</text>
+        </view>
+        <view class="task-info-row">
+          <text class="text-muted text-sm">批次</text>
+          <text class="batch-no-small">{{item.batchNo}}</text>
+        </view>
+        <view class="task-info-row">
+          <text class="text-muted text-sm">检验类型</text>
+          <text class="text-primary">{{item.typeLabel}}</text>
+        </view>
+      </view>
+      <view class="task-footer flex-between">
+        <text class="text-sm text-muted">{{item.createTime}}</text>
+        <text class="text-primary text-sm">录入结果 ></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{taskList.length === 0 && !loading}}">
+    <text class="empty-icon">🔬</text>
+    <text class="empty-text">暂无检验任务</text>
+  </view>
+
+  <view class="fab" bindtap="onCreateTask">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+<view class="page-container">
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'live' ? 'active' : ''}}" bindtap="onTabChange" data-tab="live">实时监控</view>
+    <view class="tab-item {{activeTab === 'vlog' ? 'active' : ''}}" bindtap="onTabChange" data-tab="vlog">溯源Vlog</view>
+  </view>
+
+  <view wx:if="{{activeTab === 'live'}}">
+    <view class="video-grid">
+      <view class="video-card card" wx:for="{{videoList}}" wx:key="id">
+        <view class="video-preview" bindtap="onVideoTap" data-id="{{item.deviceId}}" data-name="{{item.name}}">
+          <view class="video-placeholder">
+            <text class="video-placeholder-icon">📹</text>
+            <text class="video-placeholder-text">{{item.name}}</text>
+          </view>
+          <view class="video-status">
+            <view class="status-dot {{item.online ? 'status-dot-online' : 'status-dot-offline'}}"></view>
+            <text class="text-sm">{{item.online ? '在线' : '离线'}}</text>
+          </view>
+        </view>
+        <view class="video-actions">
+          <text class="video-action-btn" bindtap="onCaptureSnapshot" data-id="{{item.deviceId}}">📷 截图</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'vlog'}}">
+    <view class="section">
+      <view class="flex-between mb-20">
+        <view class="section-title" style="margin-bottom:0">Vlog列表</view>
+        <button class="btn-primary" size="mini" bindtap="onGenerateVlog">生成Vlog</button>
+      </view>
+      <view class="vlog-card card" wx:for="{{vlogList}}" wx:key="id">
+        <view class="vlog-preview">
+          <text class="vlog-duration">{{item.duration}}</text>
+        </view>
+        <view class="vlog-info">
+          <text class="vlog-title">{{item.title}}</text>
+          <text class="text-sm text-muted">批次：{{item.batchNo}}</text>
+          <text class="text-sm text-muted">{{item.createTime}}</text>
+        </view>
+        <view class="vlog-actions">
+          <text class="video-action-btn" bindtap="onShareVlog" data-id="{{item.id}}">{{item.shared ? '已分享' : '分享'}}</text>
+        </view>
+      </view>
+      <view class="empty-state" wx:if="{{vlogList.length === 0}}">
+        <text class="empty-text">暂无Vlog</text>
+      </view>
+    </view>
+  </view>
+</view>

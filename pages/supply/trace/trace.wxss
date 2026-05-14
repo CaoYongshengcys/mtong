@@ -1,0 +1,124 @@
+.search-section {
+  padding: 30rpx;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.search-input {
+  flex: 1;
+  background-color: #F5F5F5;
+  border-radius: 12rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.search-scan {
+  padding: 16rpx;
+  font-size: 36rpx;
+}
+
+.search-btn {
+  background-color: #2B7A4F;
+  color: #ffffff;
+  padding: 16rpx 32rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.recent-section {
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+
+.recent-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.recent-tag {
+  font-size: 24rpx;
+  color: #666666;
+  background-color: #F5F5F5;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-family: 'Courier New', monospace;
+}
+
+.trace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.trace-product {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333333;
+}
+
+.trace-batch {
+  font-family: 'Courier New', monospace;
+}
+
+.trace-chain {
+  padding-left: 10rpx;
+}
+
+.trace-node {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.trace-dot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 30rpx;
+}
+
+.trace-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background-color: #2B7A4F;
+  flex-shrink: 0;
+}
+
+.trace-line {
+  width: 4rpx;
+  flex: 1;
+  background-color: #C8E6C9;
+  margin: 6rpx 0;
+}
+
+.trace-card {
+  flex: 1;
+  background-color: #F8F8F8;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.trace-stage {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2B7A4F;
+}
+
+.trace-meta {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 8rpx;
+}

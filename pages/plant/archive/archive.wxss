@@ -1,0 +1,88 @@
+.archive-list {
+  padding: 20rpx 30rpx;
+}
+
+.archive-card {
+  margin-bottom: 20rpx;
+}
+
+.archive-header {
+  margin-bottom: 20rpx;
+}
+
+.archive-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.stage-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.stage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.stage-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background-color: #E0E0E0;
+  margin-bottom: 8rpx;
+}
+
+.stage-item.active .stage-dot {
+  background-color: #2B7A4F;
+}
+
+.stage-text {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.stage-item.active .stage-text {
+  color: #2B7A4F;
+  font-weight: 600;
+}
+
+.stage-line {
+  flex: 1;
+  height: 4rpx;
+  background-color: #E0E0E0;
+  margin: 0 8rpx;
+  margin-bottom: 28rpx;
+}
+
+.stage-line.active {
+  background-color: #2B7A4F;
+}
+
+.archive-info {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.archive-info view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-info-value {
+  font-size: 26rpx;
+  color: #333333;
+  margin-top: 4rpx;
+}
+
+.archive-footer {
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0F0;
+}

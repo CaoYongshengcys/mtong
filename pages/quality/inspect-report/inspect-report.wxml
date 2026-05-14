@@ -1,0 +1,69 @@
+<view class="page-container">
+  <view class="section">
+    <view class="section-title">样品信息</view>
+    <view class="form-group">
+      <text class="form-label">样品编号</text>
+      <input class="form-input" value="{{form.sampleNo}}" bindinput="onInput" data-field="sampleNo" placeholder="自动生成或手动输入" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">批次号</text>
+      <input class="form-input" value="{{form.batchNo}}" bindinput="onInput" data-field="batchNo" placeholder="关联成品批次号" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">产品名称</text>
+      <input class="form-input" value="{{form.productName}}" bindinput="onInput" data-field="productName" placeholder="请输入产品名称" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">检验类型</text>
+      <picker range="{{inspectTypes}}" range-key="label" bindchange="onInspectTypeChange">
+        <view class="form-input picker-input">
+          <text>{{inspectTypeLabel || '请选择'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="flex-between mb-20">
+      <view class="section-title" style="margin-bottom:0">检验项目</view>
+      <button class="btn-outline" size="mini" bindtap="onCalcIndicator">自动计算</button>
+    </view>
+    <view class="inspect-item" wx:for="{{form.items}}" wx:key="name">
+      <view class="inspect-item-header flex-between">
+        <text class="inspect-item-name">{{item.name}}</text>
+        <text class="text-sm text-muted">标准：{{item.standard}}</text>
+      </view>
+      <view class="inspect-item-input flex-row">
+        <input class="form-input flex-1" type="digit" value="{{item.result}}" bindinput="onItemResultInput" data-index="{{index}}" placeholder="输入结果" />
+        <text class="inspect-unit">{{item.unit}}</text>
+      </view>
+      <text class="text-sm text-muted" wx:if="{{item.method}}">方法：{{item.method}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">检验照片</view>
+    <view class="photo-grid">
+      <view class="photo-item" wx:for="{{form.photos}}" wx:key="*this">
+        <image class="photo-img" src="{{item}}" mode="aspectFill"></image>
+        <view class="photo-delete" catchtap="onDeletePhoto" data-index="{{index}}">×</view>
+      </view>
+      <view class="photo-add" bindtap="onTakePhoto" wx:if="{{form.photos.length < 9}}">
+        <text class="photo-add-icon">+</text>
+        <text class="photo-add-text">拍照</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="form-group">
+      <text class="form-label">检验结论</text>
+      <textarea class="form-textarea" value="{{form.conclusion}}" bindinput="onInput" data-field="conclusion" placeholder="请输入检验结论" maxlength="500" />
+    </view>
+  </view>
+
+  <view class="submit-bar">
+    <button class="btn-primary submit-btn" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">提交检验结果</button>
+  </view>
+</view>

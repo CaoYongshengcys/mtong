@@ -1,0 +1,137 @@
+.tab-bar {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  position: relative;
+}
+
+.tab-item.active { color: #1565C0; font-weight: 600; }
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #1565C0;
+  border-radius: 2rpx;
+}
+
+.form-row { display: flex; gap: 20rpx; }
+.form-group-half { flex: 1; }
+.picker-input { display: flex; justify-content: space-between; align-items: center; }
+.picker-arrow { color: #cccccc; }
+
+.batch-no-display {
+  background-color: #F0F7FF;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  border: 1rpx solid #BBDEFB;
+}
+
+.batch-no-text {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1565C0;
+  font-family: 'Courier New', monospace;
+}
+
+.station-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.station-item {
+  width: 48%;
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: #F8F8F8;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.station-icon { font-size: 36rpx; margin-right: 12rpx; }
+.station-label { font-size: 26rpx; color: #333333; flex: 1; }
+
+.station-status.done {
+  color: #4CAF50;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.record-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.record-item:last-child { border-bottom: none; }
+.record-header { margin-bottom: 6rpx; }
+
+.record-station {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.trace-chain {
+  padding-left: 30rpx;
+}
+
+.trace-node {
+  position: relative;
+  padding-left: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.trace-node:last-child { padding-bottom: 0; }
+
+.trace-dot {
+  position: absolute;
+  left: 0;
+  top: 6rpx;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background-color: #1565C0;
+}
+
+.trace-line {
+  position: absolute;
+  left: 11rpx;
+  top: 30rpx;
+  width: 2rpx;
+  height: calc(100% - 30rpx);
+  background-color: #BBDEFB;
+}
+
+.trace-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.trace-batch-no {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  font-family: 'Courier New', monospace;
+}
+
+.submit-bar {
+  padding: 30rpx;
+  padding-bottom: calc(30rpx + env(safe-area-inset-bottom));
+}
+
+.submit-btn { width: 100%; }

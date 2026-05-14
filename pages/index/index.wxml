@@ -1,0 +1,64 @@
+<scroll-view class="page-container" scroll-y="true">
+  <view class="header">
+    <view class="header-top">
+      <view class="greeting">
+        <text class="greeting-text">用户，您好</text>
+        <text class="greeting-sub">今日工作概览</text>
+      </view>
+      <view class="header-avatar" bindtap="switchToTab" data-url="/pages/mine/index/index">
+        <image class="avatar-img" src="/images/default_avatar.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item" bindtap="switchToTab" data-url="/pages/plant/diary/diary">
+        <text class="stat-value">3</text>
+        <text class="stat-label">农事记录</text>
+      </view>
+      <view class="stat-item" bindtap="switchToTab" data-url="/pages/process/batch/batch">
+        <text class="stat-value">2</text>
+        <text class="stat-label">加工批次</text>
+      </view>
+      <view class="stat-item" bindtap="navigateTo" data-url="/pages/process/iot-monitor/iot-monitor">
+        <text class="stat-value text-danger">1</text>
+        <text class="stat-label">设备告警</text>
+      </view>
+      <view class="stat-item" bindtap="navigateTo" data-url="/pages/quality/inspect-task/inspect-task">
+        <text class="stat-value">0</text>
+        <text class="stat-label">待检验</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">快捷功能</view>
+    <view class="quick-grid">
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/plant/diary-add/diary-add"><view class="quick-icon icon-plant">记</view><text class="quick-label">农事日记</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/process/batch-detail/batch-detail?type=create"><view class="quick-icon icon-batch">批</view><text class="quick-label">创建批次</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/quality/inspect-task/inspect-task"><view class="quick-icon icon-inspect">检</view><text class="quick-label">检验录入</text></view>
+      <view class="quick-item" bindtap="switchToTab" data-url="/pages/supply/trace/trace"><view class="quick-icon icon-trace">溯</view><text class="quick-label">溯源查询</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/plant/plot/plot"><view class="quick-icon icon-plot">地</view><text class="quick-label">地块管理</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/process/iot-monitor/iot-monitor"><view class="quick-icon icon-iot">温</view><text class="quick-label">IoT监控</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/supply/compliance/compliance"><view class="quick-icon icon-report">报</view><text class="quick-label">合规报告</text></view>
+      <view class="quick-item" bindtap="navigateTo" data-url="/pages/supply/factory/factory"><view class="quick-icon icon-video">视</view><text class="quick-label">透明工厂</text></view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">设备告警</view>
+    <view class="alarm-item" bindtap="onAlarmTap">
+      <view class="alarm-dot status-dot-alarm"></view>
+      <view class="alarm-content">
+        <text class="alarm-device">烘干房1号</text>
+        <text class="alarm-msg text-sm text-muted">温度超标 42C</text>
+      </view>
+      <text class="alarm-time text-sm text-muted">08:30</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">待办事项</view>
+    <view class="todo-item" bindtap="switchToTab" data-url="/pages/plant/diary/diary"><view class="todo-type plant">种植</view><view class="todo-content"><text class="todo-title">黄芪地块A-3需施肥</text></view><text class="todo-time text-sm text-muted">09:00</text></view>
+    <view class="todo-item" bindtap="switchToTab" data-url="/pages/process/batch/batch"><view class="todo-type process">加工</view><view class="todo-content"><text class="todo-title">批次CJ-20260510-001待切片</text></view><text class="todo-time text-sm text-muted">10:30</text></view>
+    <view class="todo-item" bindtap="navigateTo" data-url="/pages/quality/inspect-task/inspect-task"><view class="todo-type quality">质检</view><view class="todo-content"><text class="todo-title">防风成品待检验</text></view><text class="todo-time text-sm text-muted">14:00</text></view>
+  </view>
+</scroll-view>

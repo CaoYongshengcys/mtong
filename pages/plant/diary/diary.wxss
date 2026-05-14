@@ -1,0 +1,141 @@
+.sub-nav {
+  display: flex;
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  margin-bottom: 2rpx;
+}
+
+.sub-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 0;
+  border-radius: 12rpx;
+  transition: all 0.2s;
+}
+
+.sub-nav-item.active {
+  background-color: #E8F5E9;
+}
+
+.sub-nav-item.active .sub-nav-text {
+  color: #2B7A4F;
+  font-weight: 600;
+}
+
+.sub-nav-icon {
+  font-size: 36rpx;
+  margin-bottom: 4rpx;
+}
+
+.sub-nav-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.filter-bar {
+  background-color: #ffffff;
+  padding: 16rpx 30rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.filter-scroll {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.filter-item {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+  color: #666666;
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+  background-color: #F5F5F5;
+}
+
+.filter-item.active {
+  background-color: #2B7A4F;
+  color: #ffffff;
+}
+
+.date-picker {
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}
+
+.date-text {
+  font-size: 24rpx;
+  color: #2B7A4F;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #2B7A4F;
+  border-radius: 20rpx;
+}
+
+.diary-list {
+  padding: 0 30rpx;
+}
+
+.diary-card {
+  margin-bottom: 20rpx;
+}
+
+.diary-header {
+  margin-bottom: 16rpx;
+}
+
+.diary-operation {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.diary-body {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16rpx;
+}
+
+.diary-plot {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 6rpx;
+}
+
+.diary-operator {
+  font-size: 24rpx;
+}
+
+.diary-footer {
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 180rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #2B7A4F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(43, 122, 79, 0.4);
+  z-index: 100;
+}
+
+.fab-icon {
+  font-size: 48rpx;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.loading-tip {
+  text-align: center;
+  padding: 30rpx;
+}

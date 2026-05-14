@@ -1,0 +1,73 @@
+<view class="page-container">
+  <view class="section">
+    <view class="section-title">设备列表</view>
+    <view class="device-list">
+      <view class="device-card card" wx:for="{{devices}}" wx:key="id" bindtap="onDeviceTap" data-id="{{item.id}}">
+        <view class="device-header flex-between">
+          <view class="flex-row">
+            <view class="status-dot {{item.dotClass}}"></view>
+            <text class="device-name">{{item.name}}</text>
+          </view>
+          <text class="tag {{item.statusClass}}">
+            {{item.statusLabel}}
+          </text>
+        </view>
+        <view class="device-data" wx:if="{{item.lastData}}">
+          <view class="data-item">
+            <text class="data-label">温度</text>
+            <text class="data-value {{item.tempClass}}">{{item.lastData.temperature}}°C</text>
+          </view>
+          <view class="data-item">
+            <text class="data-label">湿度</text>
+            <text class="data-value">{{item.lastData.humidity}}%RH</text>
+          </view>
+          <view class="data-item">
+            <text class="data-label">电量</text>
+            <text class="data-value {{item.batteryClass}}">{{item.battery}}%</text>
+          </view>
+        </view>
+        <text class="text-sm text-muted mt-10">更新：{{item.lastData.time}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{alarmList.length > 0}}">
+    <view class="section-title">告警记录</view>
+    <view class="alarm-item" wx:for="{{alarmList}}" wx:key="id">
+      <view class="flex-row">
+        <view class="status-dot {{item.level === 'danger' ? 'status-dot-alarm' : 'status-dot-online'}}"></view>
+        <view class="alarm-content">
+          <text class="alarm-device">{{item.deviceName}}</text>
+          <text class="text-sm text-muted">{{item.message}}</text>
+        </view>
+      </view>
+      <text class="text-sm text-muted">{{item.time}}</text>
+    </view>
+  </view>
+
+  <view class="device-detail-popup" wx:if="{{selectedDevice}}">
+    <view class="popup-mask" bindtap="onCloseDetail"></view>
+    <view class="popup-content">
+      <view class="popup-header flex-between">
+        <text class="popup-title">{{selectedDevice.name}}</text>
+        <text class="popup-close" bindtap="onCloseDetail">×</text>
+      </view>
+      <view class="popup-body">
+        <view class="detail-data">
+          <view class="detail-data-item">
+            <text class="detail-data-label">当前温度</text>
+            <text class="detail-data-value {{selectedDevice.alarm ? 'text-danger' : 'text-primary'}}">{{selectedDevice.lastData.temperature}}°C</text>
+          </view>
+          <view class="detail-data-item">
+            <text class="detail-data-label">当前湿度</text>
+            <text class="detail-data-value text-primary">{{selectedDevice.lastData.humidity}}%RH</text>
+          </view>
+        </view>
+        <view class="chart-placeholder">
+          <text class="text-muted">24小时温湿度曲线（需集成图表组件）</text>
+        </view>
+        <button class="btn-outline mt-20" size="mini" bindtap="onSetThreshold">设置告警阈值</button>
+      </view>
+    </view>
+  </view>
+</view>

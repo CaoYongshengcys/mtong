@@ -1,0 +1,30 @@
+.picker-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.picker-arrow { color: #cccccc; }
+
+.report-card {
+  margin-bottom: 16rpx;
+}
+
+.report-item-header { margin-bottom: 10rpx; }
+
+.report-item-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.report-item-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.report-item-actions {
+  padding-top: 10rpx;
+  border-top: 1rpx solid #F0F0F0;
+}

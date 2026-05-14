@@ -1,0 +1,84 @@
+<view class="page-container">
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'info' ? 'active' : ''}}" bindtap="onTabChange" data-tab="info">基本信息</view>
+    <view class="tab-item {{activeTab === 'map' ? 'active' : ''}}" bindtap="onTabChange" data-tab="map">地图围栏</view>
+    <view class="tab-item {{activeTab === 'diary' ? 'active' : ''}}" bindtap="onTabChange" data-tab="diary">农事记录</view>
+  </view>
+
+  <view wx:if="{{activeTab === 'info'}}">
+    <view class="section">
+      <view class="form-group">
+        <text class="form-label required">地块名称</text>
+        <input class="form-input" value="{{form.name}}" bindinput="onInput" data-field="name" placeholder="请输入地块名称" />
+      </view>
+      <view class="form-group">
+        <text class="form-label required">药材品种</text>
+        <picker range="{{herbTypes}}" range-key="label" bindchange="onHerbTypeChange">
+          <view class="form-input picker-input">
+            <text>{{herbTypeLabel || '请选择品种'}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-row">
+        <view class="form-group form-group-half">
+          <text class="form-label required">面积(亩)</text>
+          <input class="form-input" type="digit" value="{{form.area}}" bindinput="onInput" data-field="area" placeholder="0" />
+        </view>
+        <view class="form-group form-group-half">
+          <text class="form-label">海拔(m)</text>
+          <input class="form-input" type="digit" value="{{form.altitude}}" bindinput="onInput" data-field="altitude" placeholder="0" />
+        </view>
+      </view>
+      <view class="form-group">
+        <text class="form-label">土壤类型</text>
+        <picker range="{{soilTypes}}" range-key="label" bindchange="onSoilTypeChange">
+          <view class="form-input picker-input">
+            <text>{{soilTypeLabel || '请选择土壤类型'}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-group">
+        <text class="form-label">所在位置</text>
+        <input class="form-input" value="{{form.location}}" bindinput="onInput" data-field="location" placeholder="请输入位置描述" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">描述</text>
+        <textarea class="form-textarea" value="{{form.description}}" bindinput="onInput" data-field="description" placeholder="请输入地块描述" maxlength="500" />
+      </view>
+    </view>
+
+    <view class="submit-bar">
+      <button class="btn-primary submit-btn" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">保存地块</button>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'map'}}">
+    <view class="map-container">
+      <map class="plot-map" latitude="{{latitude}}" longitude="{{longitude}}" scale="15" markers="{{markers}}" polygons="{{polygons}}" bindtap="onMapTap"></map>
+    </view>
+    <view class="map-actions" wx:if="{{isCreate}}">
+      <text class="text-sm text-muted mb-20">点击地图添加围栏顶点</text>
+      <view class="flex-row">
+        <button class="btn-outline" size="mini" bindtap="onClearBoundary">清除围栏</button>
+        <text class="text-sm text-muted ml-10">已添加 {{form.boundary.length}} 个顶点</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'diary'}}">
+    <view class="section">
+      <view class="diary-item" wx:for="{{diaryList}}" wx:key="id">
+        <view class="flex-between">
+          <text class="text-bold">{{item.operationLabel}}</text>
+          <text class="text-sm text-muted">{{item.date}}</text>
+        </view>
+        <text class="text-sm text-muted">操作人：{{item.operator}}</text>
+      </view>
+      <view class="empty-state" wx:if="{{diaryList.length === 0}}">
+        <text class="empty-text">暂无农事记录</text>
+      </view>
+    </view>
+  </view>
+</view>

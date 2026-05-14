@@ -1,0 +1,233 @@
+@import './styles/common.wxss';
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 28rpx;
+  color: #333333;
+  background-color: #F5F5F5;
+  line-height: 1.6;
+}
+
+.page-container {
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.section {
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 6rpx;
+  height: 32rpx;
+  background-color: #2B7A4F;
+  border-radius: 3rpx;
+  margin-right: 16rpx;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary {
+  background-color: #2B7A4F;
+  color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+  border: none;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: #2B7A4F;
+  border: 2rpx solid #2B7A4F;
+  border-radius: 12rpx;
+  padding: 18rpx 38rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
+.tag-green {
+  background-color: #E8F5E9;
+  color: #2B7A4F;
+}
+
+.tag-orange {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.tag-red {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+.tag-blue {
+  background-color: #E3F2FD;
+  color: #1565C0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 60rpx;
+}
+
+.empty-state .empty-icon {
+  font-size: 120rpx;
+  color: #cccccc;
+  margin-bottom: 20rpx;
+}
+
+.empty-state .empty-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+}
+
+.form-input {
+  background-color: #F8F8F8;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.form-textarea {
+  background-color: #F8F8F8;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+  width: 100%;
+  min-height: 200rpx;
+  box-sizing: border-box;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item .item-content {
+  flex: 1;
+}
+
+.list-item .item-arrow {
+  color: #cccccc;
+  font-size: 28rpx;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.status-dot-online {
+  background-color: #4CAF50;
+}
+
+.status-dot-offline {
+  background-color: #9E9E9E;
+}
+
+.status-dot-alarm {
+  background-color: #F44336;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-primary { color: #2B7A4F; }
+.text-warning { color: #FF9800; }
+.text-danger { color: #F44336; }
+.text-muted { color: #999999; }
+.text-sm { font-size: 24rpx; }
+.text-lg { font-size: 34rpx; }
+.text-bold { font-weight: 600; }
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+.ml-10 { margin-left: 10rpx; }
+.mr-10 { margin-right: 10rpx; }
+.p-20 { padding: 20rpx; }
+.p-30 { padding: 30rpx; }

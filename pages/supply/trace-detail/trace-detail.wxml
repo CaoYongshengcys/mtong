@@ -1,0 +1,3 @@
+<view class="page-container" wx:if="{{traceInfo}}">
+  <view class="section"><text>溯源详情</text></view>
+</view>

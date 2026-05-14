@@ -1,0 +1,145 @@
+.device-list {
+  padding: 0;
+}
+
+.device-card {
+  margin-bottom: 16rpx;
+}
+
+.device-header {
+  margin-bottom: 16rpx;
+}
+
+.device-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-left: 10rpx;
+}
+
+.device-data {
+  display: flex;
+  gap: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-label {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.data-value {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 4rpx;
+}
+
+.alarm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.alarm-item:last-child { border-bottom: none; }
+
+.alarm-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+
+.alarm-device {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.device-detail-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.popup-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 30rpx;
+  padding-bottom: calc(30rpx + env(safe-area-inset-bottom));
+  max-height: 80vh;
+}
+
+.popup-header {
+  margin-bottom: 30rpx;
+}
+
+.popup-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.popup-close {
+  font-size: 40rpx;
+  color: #999999;
+  padding: 0 10rpx;
+}
+
+.detail-data {
+  display: flex;
+  gap: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.detail-data-item {
+  flex: 1;
+  background-color: #F8F8F8;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-data-label {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.detail-data-value {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.chart-placeholder {
+  height: 300rpx;
+  background-color: #F8F8F8;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

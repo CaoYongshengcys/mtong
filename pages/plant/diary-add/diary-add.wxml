@@ -1,0 +1,130 @@
+<view class="page-container">
+  <view class="section">
+    <view class="form-group">
+      <text class="form-label required">选择地块</text>
+      <picker range="{{plotList}}" range-key="name" bindchange="onPlotChange">
+        <view class="form-input picker-input">
+          <text class="{{form.plotName ? '' : 'placeholder'}}">{{form.plotName || '请选择地块'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+      <view class="gps-info mt-10" wx:if="{{currentLocation}}">
+        <text class="text-sm text-muted">📍 {{currentLocation.latitude}}, {{currentLocation.longitude}}</text>
+        <text class="text-sm {{form.inFence ? 'text-primary' : 'text-danger'}}">{{form.inFence ? '✓ 围栏内' : '✗ 越界'}}</text>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label required">操作类型</text>
+      <picker range="{{operationTypes}}" range-key="label" bindchange="onOperationTypeChange">
+        <view class="form-input picker-input">
+          <text class="{{operationTypeLabel ? '' : 'placeholder'}}">{{operationTypeLabel || '请选择操作类型'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">药材品种</text>
+      <picker range="{{herbTypes}}" range-key="label" bindchange="onHerbTypeChange">
+        <view class="form-input picker-input">
+          <text class="{{herbTypeLabel ? '' : 'placeholder'}}">{{herbTypeLabel || '请选择品种'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-row">
+      <view class="form-group form-group-half">
+        <text class="form-label required">操作日期</text>
+        <picker mode="date" value="{{form.operationDate}}" bindchange="onDateChange">
+          <view class="form-input picker-input">
+            <text>{{form.operationDate || '选择日期'}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="form-group form-group-half">
+        <text class="form-label">操作时间</text>
+        <picker mode="time" value="{{form.operationTime}}" bindchange="onTimeChange">
+          <view class="form-input picker-input">
+            <text>{{form.operationTime || '选择时间'}}</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{form.operationType === 'pesticide' || form.operationType === 'fertilize'}}">
+    <view class="section-title">农资信息</view>
+    <view class="form-group">
+      <text class="form-label">农资名称</text>
+      <view class="flex-row">
+        <input class="form-input flex-1" value="{{form.materialName}}" bindinput="onInput" data-field="materialName" placeholder="输入或扫码识别" />
+        <view class="scan-btn" bindtap="onScanPesticide">
+          <text class="scan-btn-text">{{recognizingPesticide ? '识别中...' : '📷 识别'}}</text>
+        </view>
+      </view>
+      <view class="pesticide-warning" wx:if="{{pesticideWarning}}">
+        <text class="text-danger text-sm">{{pesticideWarning}}</text>
+      </view>
+    </view>
+    <view class="form-group">
+      <text class="form-label">批次号</text>
+      <input class="form-input" value="{{form.materialBatchNo}}" bindinput="onInput" data-field="materialBatchNo" placeholder="输入农资批次号" />
+    </view>
+    <view class="form-row">
+      <view class="form-group form-group-half">
+        <text class="form-label">用量</text>
+        <input class="form-input" type="digit" value="{{form.materialDosage}}" bindinput="onInput" data-field="materialDosage" placeholder="0" />
+      </view>
+      <view class="form-group form-group-half">
+        <text class="form-label">单位</text>
+        <picker range="{{materialUnits}}" bindchange="onUnitChange">
+          <view class="form-input picker-input">
+            <text>{{form.materialUnit || 'kg'}}</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">现场照片</view>
+    <view class="photo-grid">
+      <view class="photo-item" wx:for="{{form.photos}}" wx:key="*this">
+        <image class="photo-img" src="{{item}}" mode="aspectFill" bindtap="onPreviewPhoto" data-url="{{item}}"></image>
+        <view class="photo-delete" catchtap="onDeletePhoto" data-index="{{index}}">×</view>
+        <view class="photo-watermark">
+          <text class="watermark-text">📍 GPS | 🕐 {{form.operationDate}}</text>
+        </view>
+      </view>
+      <view class="photo-add" bindtap="onTakePhoto" wx:if="{{form.photos.length < 9}}">
+        <text class="photo-add-icon">+</text>
+        <text class="photo-add-text">拍照</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="form-group">
+      <text class="form-label">备注说明</text>
+      <textarea class="form-textarea" value="{{form.description}}" bindinput="onInput" data-field="description" placeholder="请输入备注信息" maxlength="500" />
+    </view>
+    <view class="form-row">
+      <view class="form-group form-group-half">
+        <text class="form-label">人工成本(元)</text>
+        <input class="form-input" type="digit" value="{{form.laborCost}}" bindinput="onInput" data-field="laborCost" placeholder="0.00" />
+      </view>
+      <view class="form-group form-group-half">
+        <text class="form-label">物料成本(元)</text>
+        <input class="form-input" type="digit" value="{{form.materialCost}}" bindinput="onInput" data-field="materialCost" placeholder="0.00" />
+      </view>
+    </view>
+  </view>
+
+  <view class="submit-bar">
+    <button class="btn-primary submit-btn" bindtap="onSubmit" loading="{{submitting}}" disabled="{{submitting}}">
+      {{isEdit ? '更新记录' : '提交记录'}}
+    </button>
+  </view>
+</view>

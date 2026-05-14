@@ -1,0 +1,69 @@
+<view class="page-container">
+  <view class="sub-nav">
+    <view class="sub-nav-item" bindtap="onPlotTap">
+      <text class="sub-nav-icon">🗺️</text>
+      <text class="sub-nav-text">地块</text>
+    </view>
+    <view class="sub-nav-item active">
+      <text class="sub-nav-icon">📝</text>
+      <text class="sub-nav-text">农事日记</text>
+    </view>
+    <view class="sub-nav-item" bindtap="onArchiveTap">
+      <text class="sub-nav-icon">📋</text>
+      <text class="sub-nav-text">档案</text>
+    </view>
+  </view>
+
+  <view class="filter-bar">
+    <scroll-view scroll-x class="filter-scroll">
+      <view class="filter-item {{currentFilter === 'all' ? 'active' : ''}}" bindtap="onFilterTap" data-type="all">全部</view>
+      <view class="filter-item {{currentFilter === item.value ? 'active' : ''}}" wx:for="{{operationTypes}}" wx:key="value" bindtap="onFilterTap" data-type="{{item.value}}">
+        {{item.icon}} {{item.label}}
+      </view>
+    </scroll-view>
+    <view class="date-picker">
+      <picker mode="date" value="{{currentDate}}" bindchange="onDateChange">
+        <text class="date-text">{{currentDate}}</text>
+      </picker>
+    </view>
+  </view>
+
+  <view class="diary-list">
+    <view class="diary-card card" wx:for="{{diaryList}}" wx:key="id" bindtap="onDiaryTap" data-id="{{item.id}}">
+      <view class="diary-header flex-between">
+        <view class="flex-row">
+          <text class="diary-operation">{{item.operationLabel}}</text>
+          <text class="tag tag-green ml-10">{{item.herbLabel}}</text>
+          <text class="tag tag-red ml-10" wx:if="{{item.status === 'alarm'}}">越界</text>
+        </view>
+        <text class="text-sm text-muted">{{item.dateStr}}</text>
+      </view>
+      <view class="diary-body">
+        <text class="diary-plot">{{item.plotName}}</text>
+        <text class="diary-operator text-sm text-muted">操作人：{{item.operatorName}}</text>
+      </view>
+      <view class="diary-footer flex-between">
+        <view class="diary-photos" wx:if="{{item.photoCount > 0}}">
+          <text class="text-sm text-muted">📷 {{item.photoCount}}张照片</text>
+        </view>
+        <view wx:else>
+          <text class="text-sm text-muted">无照片</text>
+        </view>
+        <text class="text-primary text-sm">查看详情 ></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{diaryList.length === 0 && !loading}}">
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">暂无农事记录</text>
+  </view>
+
+  <view class="loading-tip" wx:if="{{loading}}">
+    <text class="text-muted text-sm">加载中...</text>
+  </view>
+
+  <view class="fab" bindtap="onAddTap">
+    <text class="fab-icon">+</text>
+  </view>
+</view>
